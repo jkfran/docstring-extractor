@@ -1,0 +1,8 @@
+[tool.poetry]
+name = "docstring-extractor"
+version = "0.1.0"
+description = "Get Python docstrings from files"
+authors = ["Francisco Jimenez Cabrera <jkfran@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
