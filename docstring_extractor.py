@@ -67,7 +67,7 @@ def get_docstrings(source, module=None):
                 "type": NODE_TYPES.get(type(node)),
                 "name": name,
                 "line": lineno,
-                "docstring": docstring,
+                "docstring": docstring if docstring else "",
             }
         )
 
