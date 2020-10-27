@@ -3,6 +3,17 @@ name = "docstring-extractor"
 version = "0.1.1"
 description = "Get Python docstrings from files"
 authors = ["Francisco Jimenez Cabrera <jkfran@gmail.com>"]
+license = "GPL-3.0-or-later"
+readme = "README.md"
+homepage = "https://github.com/jkfran/docstring-extractor"
+repository = "https://github.com/jkfran/docstring-extractor"
+documentation = "https://github.com/jkfran/docstring-extractor"
+
+keywords = ["docstring", "docstrings", "parser"]
+
+classifiers = [
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
