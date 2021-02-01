@@ -1,7 +1,7 @@
 import ast
-
 from os.path import basename, splitext
 
+from docstring_parser import parse
 
 NODE_TYPES = {
     ast.ClassDef: "Class",
@@ -24,8 +24,13 @@ def parse_docstrings(source):
 def process_node(node):
     """Recursive function to obtain ast nodes"""
     node_type = NODE_TYPES.get(type(node))
-    docstring = ast.get_docstring(node)
+    docstring_text = ast.get_docstring(node)
     lineno = getattr(node, "lineno", 0)
+
+    if docstring_text:
+        docstring = parse(docstring_text)
+    else:
+        docstring = None
 
     # Recursion with supported node types
     children = [
@@ -36,41 +41,10 @@ def process_node(node):
         "type": node_type,
         "name": getattr(node, "name", None),
         "line": lineno,
-        "docstring": docstring if docstring else "",
-        "signature": get_signature(node) if node_type == "Function" else None,
+        "docstring": docstring,
+        "docstring_text": docstring_text if docstring_text else "",
         "content": children,
     }
-
-
-def get_signature(node):
-    args = []
-
-    if node.args.args:
-        [args.append([a.col_offset, a.arg]) for a in node.args.args]
-    if node.args.defaults:
-        for a in node.args.defaults:
-            if isinstance(a.value, str):
-                value = f"'{a.value}'"
-            else:
-                value = str(a.value)
-
-            args.append([a.col_offset, "=" + value])
-
-    sorted_args = sorted(args)
-    for i, p in enumerate(sorted_args):
-        if p[1].startswith("="):
-            sorted_args[i - 1][1] += p[1]
-    sorted_args = [k[1] for k in sorted_args if not k[1].startswith("=")]
-
-    if node.args.vararg:
-        sorted_args.append("*" + node.args.vararg)
-    if node.args.kwarg:
-        sorted_args.append("**" + node.args.kwarg)
-
-    if sorted_args:
-        return "(" + ", ".join(sorted_args) + ")"
-
-    return None
 
 
 def get_docstrings(source, module_name=None):

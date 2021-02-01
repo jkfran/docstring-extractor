@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "docstring-extractor"
-version = "0.2.0"
+version = "0.4.0"
 description = "Get Python docstrings from files"
 authors = ["Francisco Jimenez Cabrera <jkfran@gmail.com>"]
 license = "GPL-3.0-or-later"
@@ -17,3 +17,4 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.6"
+docstring-parser = "^0.7.2"

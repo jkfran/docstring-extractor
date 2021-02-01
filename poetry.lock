@@ -1,7 +1,16 @@
-package = []
+[[package]]
+category = "main"
+description = ""
+name = "docstring-parser"
+optional = false
+python-versions = "~=3.5"
+version = "0.7.3"
 
 [metadata]
-content-hash = "de7600acb56ad9a67b77fd08bb5acd96ae59d0bbc6d538e5682444b7d4b1cc16"
+content-hash = "f6a291bb3aabf04861c9a4caa72be64d3d2df9698570a539bd89c726595ceb17"
 python-versions = "^3.6"
 
 [metadata.files]
+docstring-parser = [
+    {file = "docstring_parser-0.7.3.tar.gz", hash = "sha256:cde5fbf8b846433dfbde1e0f96b7f909336a634d5df34a38cb75050c7346734a"},
+]
