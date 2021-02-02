@@ -73,10 +73,3 @@ def get_docstrings(source, module_name=None):
         docstrings["name"] = module_name
 
     return docstrings
-
-
-if __name__ == "__main__":
-    import sys
-
-    with open(sys.argv[1]) as file:
-        print(get_docstrings(file))
