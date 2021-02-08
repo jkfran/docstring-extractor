@@ -1,13 +1,13 @@
 [tool.poetry]
-name = "docstring-extractor"
+name = "canonicalwebteam.docstring-extractor"
 version = "0.4.0"
 description = "Get Python docstrings from files"
-authors = ["Francisco Jimenez Cabrera <jkfran@gmail.com>"]
+authors = ["Canonical web team"]
 license = "GPL-3.0-or-later"
 readme = "README.md"
-homepage = "https://github.com/jkfran/docstring-extractor"
-repository = "https://github.com/jkfran/docstring-extractor"
-documentation = "https://github.com/jkfran/docstring-extractor"
+homepage = "https://github.com/canonical-web-and-design/canonicalwebteam.docstring-extractor"
+repository = "https://github.com/canonical-web-and-design/canonicalwebteam.docstring-extractor"
+documentation = "https://github.com/canonical-web-and-design/canonicalwebteam.docstring-extractor"
 
 keywords = ["docstring", "docstrings", "parser"]
 
