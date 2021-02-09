@@ -2,7 +2,7 @@
 name = "canonicalwebteam.docstring-extractor"
 version = "0.5.0"
 description = "Get Python docstrings from files"
-authors = ["Canonical web team"]
+authors = ["Canonical Web Team <webteam@canonical.com>"]
 license = "GPL-3.0-or-later"
 readme = "README.md"
 homepage = "https://github.com/canonical-web-and-design/canonicalwebteam.docstring-extractor"
@@ -15,6 +15,13 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules"
 ]
 
+[[tool.poetry.packages]]
+include = 'canonicalwebteam'
+
 [tool.poetry.dependencies]
 python = "^3.6"
 docstring-parser = "^0.7.2"
+
+[build-system]
+requires = ['poetry>=0.12']
+build-backend = 'poetry.masonry.api'
