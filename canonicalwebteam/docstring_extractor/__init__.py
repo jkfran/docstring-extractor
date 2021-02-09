@@ -32,33 +32,61 @@ def process_node(node):
     else:
         docstring = None
 
-    # Extract parameters
     params = {
         "attributes": [],
         "arguments": [],
+        "returns": None,
     }
-    if docstring and docstring.params:
-        for param in docstring.params:
-            if param.args[0] == "attribute":
-                params["attributes"].append(
-                    {
-                        "name": param.arg_name,
-                        "type_name": param.type_name,
-                        "is_optional": param.is_optional,
-                        "description": param.description,
-                        "default": param.default,
-                    }
-                )
-            elif param.args[0] == "param":
-                params["arguments"].append(
-                    {
-                        "name": param.arg_name,
-                        "type_name": param.type_name,
-                        "is_optional": param.is_optional,
-                        "description": param.description,
-                        "default": param.default,
-                    }
-                )
+
+    description = {
+        "short": None,
+        "long": None,
+    }
+
+    if docstring:
+        # Extract parameters
+        if docstring.params:
+            for param in docstring.params:
+                if param.args[0] == "attribute":
+                    params["attributes"].append(
+                        {
+                            "name": param.arg_name,
+                            "type_name": param.type_name,
+                            "is_optional": param.is_optional,
+                            "description": param.description,
+                            "default": param.default,
+                        }
+                    )
+                elif param.args[0] == "param":
+                    params["arguments"].append(
+                        {
+                            "name": param.arg_name,
+                            "type_name": param.type_name,
+                            "is_optional": param.is_optional,
+                            "description": param.description,
+                            "default": param.default,
+                        }
+                    )
+        if docstring.returns:
+            params["returns"] = {
+                "name": docstring.returns.return_name,
+                "type_name": docstring.returns.type_name,
+                "is_generator": docstring.returns.is_generator,
+                "description": docstring.returns.description,
+            }
+        # Extract description
+        if docstring.blank_after_short_description:
+            if docstring.long_description:
+                description["short"] = docstring.short_description
+                description["long"] = docstring.long_description
+            else:
+                description["short"] = docstring.short_description
+        elif docstring.short_description:
+            description[
+                "long"
+            ] = f"{docstring.short_description} {docstring.long_description}"
+        else:
+            description["long"] = docstring.long_description
 
     # Recursion with supported node types
     children = [
@@ -73,6 +101,7 @@ def process_node(node):
         "docstring_text": docstring_text if docstring_text else "",
         "content": children,
         "params": params,
+        "description": description,
     }
 
 
