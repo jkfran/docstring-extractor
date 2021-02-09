@@ -31,4 +31,4 @@ jobs:
         pip3 install flake8 black
 
     - name: Lint Python
-      run: python3 -m flake8 canonicalwebteam tests && python3 -m black --line-length 79 --check canonicalwebteam tests
+      run: python3 -m flake8 canonicalwebteam && python3 -m black --line-length 79 --check canonicalwebteam
