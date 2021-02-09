@@ -10,7 +10,7 @@ The main difference between this library and docstring-parser is that this one i
 ## Usage
 
 ```python
->>> from docstring_extractor import get_docstrings
+>>> from canonicalwebteam.docstring_extractor import get_docstrings
 >>>
 >>> with open("example.py") as file:
 ...     docstrings = get_docstrings(file)
