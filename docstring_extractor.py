@@ -32,6 +32,34 @@ def process_node(node):
     else:
         docstring = None
 
+    # Extract parameters
+    params = {
+        "attributes": [],
+        "arguments": [],
+    }
+    if docstring and docstring.params:
+        for param in docstring.params:
+            if param.args[0] == "attribute":
+                params["attributes"].append(
+                    {
+                        "name": param.arg_name,
+                        "type_name": param.type_name,
+                        "is_optional": param.is_optional,
+                        "description": param.description,
+                        "default": param.default,
+                    }
+                )
+            elif param.args[0] == "param":
+                params["arguments"].append(
+                    {
+                        "name": param.arg_name,
+                        "type_name": param.type_name,
+                        "is_optional": param.is_optional,
+                        "description": param.description,
+                        "default": param.default,
+                    }
+                )
+
     # Recursion with supported node types
     children = [
         process_node(n) for n in node.body if isinstance(n, tuple(NODE_TYPES))
@@ -44,6 +72,7 @@ def process_node(node):
         "docstring": docstring,
         "docstring_text": docstring_text if docstring_text else "",
         "content": children,
+        "params": params,
     }
 
 
