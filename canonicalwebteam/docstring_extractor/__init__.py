@@ -43,6 +43,12 @@ def process_node(node):
         "long": None,
     }
 
+    arguments = []
+    if node_type == "Function":
+        args = getattr(getattr(node, "args"), "args")
+        for arg in args:
+            arguments.append(getattr(arg, "arg"))
+
     if docstring:
         # Extract parameters
         if docstring.params:
@@ -102,6 +108,7 @@ def process_node(node):
         "content": children,
         "params": params,
         "description": description,
+        "arguments": arguments,
     }
 
 
