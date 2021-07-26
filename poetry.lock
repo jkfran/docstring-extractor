@@ -1,6 +1,6 @@
 [[package]]
 name = "docstring-parser"
-version = "0.8.1"
+version = "0.9.1"
 description = "\"Parse Python docstrings in reST, Google and Numpydoc format\""
 category = "main"
 optional = false
@@ -9,9 +9,9 @@ python-versions = ">=3.5"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.6"
-content-hash = "2db9422ca3f924de4b817e6166460e29acff7f3ab0f4602542e8aafe82205a1d"
+content-hash = "38e1e1327cb814a2445e64fcd7cc7d166400c2694a4cc430e94ee70b2bfef5b2"
 
 [metadata.files]
 docstring-parser = [
-    {file = "docstring_parser-0.8.1.tar.gz", hash = "sha256:dd68bbe33446e9dbdec087fd18bad8f6dc8eedda4c5c2321208951f3acfc5e04"},
+    {file = "docstring_parser-0.9.1.tar.gz", hash = "sha256:53749ad097c920687116ec91a5964fd92425e742503693ff44350645042b110c"},
 ]
