@@ -28,7 +28,10 @@ def process_node(node):
     lineno = getattr(node, "lineno", 0)
 
     if docstring_text:
-        docstring = parse(docstring_text)
+        try:
+            docstring = parse(docstring_text)
+        except Exception:
+            docstring = None
     else:
         docstring = None
 

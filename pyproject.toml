@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "canonicalwebteam.docstring-extractor"
-version = "0.7.0"
+version = "1.0.0"
 description = "Get Python docstrings from files"
 authors = ["Canonical Web Team <webteam@canonical.com>"]
 license = "GPL-3.0-or-later"
@@ -20,7 +20,7 @@ include = 'canonicalwebteam'
 
 [tool.poetry.dependencies]
 python = "^3.6"
-docstring-parser = "^0.9.0"
+docstring-parser = "^0.10.0"
 
 [build-system]
 requires = ['poetry>=0.12']
