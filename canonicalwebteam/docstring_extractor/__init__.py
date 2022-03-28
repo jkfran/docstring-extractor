@@ -49,8 +49,18 @@ def process_node(node):
     arguments = []
     if node_type == "Function":
         args = getattr(getattr(node, "args"), "args")
+
         for arg in args:
-            arguments.append(getattr(arg, "arg"))
+            name = getattr(arg, "arg")
+            annotation = getattr(arg, "annotation")
+            arguments.append(
+                {
+                    "name": name,
+                    "type": getattr(annotation, "id", None)
+                    if annotation
+                    else None,
+                }
+            )
 
     if docstring:
         # Extract parameters
